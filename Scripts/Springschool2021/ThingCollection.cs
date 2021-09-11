@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enables the player to construct complex object by colliding the correct parts into the main part.
+/// Creates a list of parts based on the children of this object. These parts will be disabled on start and enabled, 
+/// if a part with the same name collides with this.
+/// </summary>
 public class ThingCollection : MonoBehaviour
 {
     public List<GameObject> parts = new List<GameObject>();
