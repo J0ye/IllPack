@@ -5,7 +5,8 @@ using UnityEngine;
 public class Connector : MonoBehaviour
 {
     public Rigidbody target;
-    public float maxDistance = 1f;
+    public float length = 1f;
+    public float flexibillity = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,18 @@ public class Connector : MonoBehaviour
     void LateUpdate()
     {
         float distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance > maxDistance)
+        if (distance > length)
         {
-            float diff = distance - maxDistance;
+            float diff = distance - length;
             Vector3 towards = transform.position - target.transform.position;
-            target.velocity += towards * diff;
+
+            if(distance > length + flexibillity)
+            {
+                target.transform.position += towards * (distance - (length + flexibillity));
+            } else
+            {
+                target.velocity += towards * diff;
+            }
         }
     }
 }
