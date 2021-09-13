@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MultiFunctionScript : MonoBehaviour
 {
     public List<Material> ColorTable = new List<Material>();
-    public string name = "";
+    public string sceneName = "";
 
     private Material standardMaterial;
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class MultiFunctionScript : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void SpawnPrefab(GameObject prefab)
