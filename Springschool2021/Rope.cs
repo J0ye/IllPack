@@ -51,10 +51,9 @@ public class Rope : MonoBehaviour
             Vector3 velocity = segment.posNow - segment.posOld;
             segment.posOld = segment.posNow;
             segment.posNow += velocity;
-            if(i == vertices -1)
+            if(i == vertices -1 && connectedTo != null)
             {
                 segment.posNow = connectedTo.transform.position;
-                connectedTo.GetComponent<Rigidbody>().velocity += velocity;
             }
             else
             {
