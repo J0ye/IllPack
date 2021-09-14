@@ -7,6 +7,7 @@ public class ThingController3D : MonoBehaviour
     public LayerMask layerMask;
     [Range(0.1f, 100f)]
     public float speed = 2f;
+    public bool fixedPull = false;
     public bool debug = false;
 
     protected RaycastHit hit;
@@ -84,10 +85,17 @@ public class ThingController3D : MonoBehaviour
     {
         if (target != null)
         {
-            //Pull the target towards the position of input. Force relative to distance.
-            Vector3 targetPos = inputPos - target.position;
-            targetPos = new Vector3(targetPos.x, 0, targetPos.z);
-            target.GetComponent<Rigidbody>().velocity = targetPos * speed;
+            if (!fixedPull)
+            {
+                //Pull the target towards the position of input. Force relative to distance.
+                Vector3 targetPos = inputPos - target.position;
+                targetPos = new Vector3(targetPos.x, 0, targetPos.z);
+                target.GetComponent<Rigidbody>().velocity = targetPos * speed;
+            }
+            else
+            {
+                target.transform.position = inputPos;
+            }
         }
     }
 }

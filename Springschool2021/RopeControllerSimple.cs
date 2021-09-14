@@ -23,7 +23,7 @@ public class RopeControllerSimple : MonoBehaviour
     //Mass of what the rope is carrying
     private float loadMass = 100f;
     //How fast we can add more/less rope
-    float winchSpeed = 2f;
+    //float winchSpeed = 2f;
 
     //The joint we use to approximate the rope
     SpringJoint springJoint;
@@ -98,13 +98,6 @@ public class RopeControllerSimple : MonoBehaviour
     //Display the rope with a line renderer
     private void DisplayRope()
     {
-        //This is not the actual width, but the width use so we can see the rope
-        float ropeWidth = 0.2f;
-
-        lineRenderer.startWidth = ropeWidth;
-        lineRenderer.endWidth = ropeWidth;
-
-
         //Update the list with rope sections by approximating the rope with a bezier curve
         //A Bezier curve needs 4 control points
         Vector3 A = whatTheRopeIsConnectedTo.position;
@@ -149,7 +142,7 @@ public class RopeControllerSimple : MonoBehaviour
         bool hasChangedRope = false;
 
         //More rope
-        if (Input.GetKey(KeyCode.O) && ropeLength < maxRopeLength)
+        /*if (Input.GetKey(KeyCode.O) && ropeLength < maxRopeLength)
         {
             ropeLength += winchSpeed * Time.deltaTime;
 
@@ -160,7 +153,7 @@ public class RopeControllerSimple : MonoBehaviour
             ropeLength -= winchSpeed * Time.deltaTime;
 
             hasChangedRope = true;
-        }
+        }*/
 
 
         if (hasChangedRope)
