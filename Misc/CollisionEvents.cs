@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TriggerEvents : MonoBehaviour
+public class CollisionEvents : MonoBehaviour
 {
     public bool isReverseListening = false;
     public string[] tagsToListenTo;
     public GameObject[] objectsToListenTo;
     public int requiredNumberOfObjects = 1;
-    public UnityEvent onTriggerEnter;
-    public UnityEvent onTriggerExit;
+    public UnityEvent onCollisionEnter;
+    public UnityEvent onCollisionExit;
 
     private List<GameObject> triggeredObjects;
     public int numberOfObjects = 0;
@@ -22,7 +22,7 @@ public class TriggerEvents : MonoBehaviour
 
         if (collider != null)
         {
-            collider.isTrigger = true;
+            collider.isTrigger = false;
         }
         else
         {
@@ -71,7 +71,7 @@ public class TriggerEvents : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (isValid(other.gameObject))
         {
@@ -80,19 +80,19 @@ public class TriggerEvents : MonoBehaviour
             numberOfObjects++;
 
             if (numberOfObjects >= requiredNumberOfObjects)
-                onTriggerEnter.Invoke();
+                onCollisionEnter.Invoke();
 
             return;
         }
     }
 
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
         if (isValid(other.gameObject))
         {
             if (numberOfObjects == requiredNumberOfObjects)
-                onTriggerExit.Invoke();
+                onCollisionExit.Invoke();
 
             numberOfObjects--;
 
