@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpeechBubble", menuName = "Dialouge/New Speechbubble", order = 1)]
-public class SpeechBubble : ScriptableObject
+public class SpeechBubble : MonoBehaviour
 {
     public int SecondToShow = 0;
     [TextArea]
