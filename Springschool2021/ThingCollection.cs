@@ -19,6 +19,7 @@ public class ThingCollection : MonoBehaviour
             parts.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
+        
     }
 
     public void OnCollisionEnter(Collision collision)
